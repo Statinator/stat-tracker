@@ -4,9 +4,9 @@ from rest_framework import serializers
 class ActivitySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Activity
-        fields = ('title', 'posted_at')
+        fields = ('url', 'title', 'posted_at')
 
 class StatsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Stats
-        fields = ('activity', 'value', 'posted_at')
+        fields = ('url', 'activity', 'value', 'posted_at')
