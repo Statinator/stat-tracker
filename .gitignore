@@ -70,3 +70,12 @@ target/
 
 *.sqlite3
 
+# JS stuff
+
+node_modules
+.envrc
+.direnv/
+.idea/
+stat_tracker/.idea/
+
+
