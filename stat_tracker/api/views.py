@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from rest_framework import viewsets, generics
 from .models import Activity, Stats
-from .serializer import ActivitySerializer, StatsSerializer
+from django.contrib.auth.models import User
+
+from .serializer import ActivitySerializer, StatsSerializer, UserSerializer
 
 
 class ActivityViewSet(viewsets.ModelViewSet):
@@ -18,3 +20,8 @@ class StatsViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
