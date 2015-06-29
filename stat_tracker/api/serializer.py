@@ -9,3 +9,4 @@ class ActivitySerializer(serializers.HyperlinkedModelSerializer):
 class StatsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Stats
+        fields = ('activity', 'value', 'posted_at')
