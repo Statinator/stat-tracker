@@ -73,3 +73,7 @@ target/
 # JS stuff
 
 node_modules
+.envrc
+.direnv/
+.idea/
+stat_tracker/.idea/
