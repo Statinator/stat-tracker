@@ -10,9 +10,16 @@ router.route('register', function () {
   $('.main-content').html(views['user-reg']);
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
+<<<<<<< HEAD
 
   $('.user-reg-form').on('submit', function () {
 
+=======
+  
+  $('.user-reg-form').submit(function (e) {
+    e.preventDefault();
+    
+>>>>>>> 38e7206ce50b6b7b17586403a4b05f2c5818e189
     var data = {
       'username': $('.username').val(),
       'password': $('.password').val(),
@@ -29,6 +36,7 @@ router.route('register', function () {
     })
     .done(function () {
       alert('success');
+      document.location.href="/#" + "activities";
     })
     .fail(function (arguements) {
       console.log(arguements);
