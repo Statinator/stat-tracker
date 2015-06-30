@@ -10,7 +10,6 @@ router.route('activities', function () {
   render();
 
 function render () {
-   $('.main-content').html(views['activities']);
    $.ajax({
       headers: { "X-CSRFToken": csrftoken },
       url: '/api/activities/',
@@ -19,10 +18,12 @@ function render () {
     .done(function (data) {
       alert('success');
       console.log(data);
+      createTemplate({ activities : data});
       })
     .fail(function (arguements) {
       console.log(arguements);
     });
+    
   }; 
   
   var csrftoken = getCookie('csrftoken');
@@ -42,6 +43,14 @@ function render () {
       }
   }
   return cookieValue;
+  }
+  
+  function createTemplate (model) {
+    var templateFn = _.template(views['activities'], { variable: 'm' });
+    
+    var template = templateFn(model);
+  
+    $('.main-content').html(template);
   }
   
 });
