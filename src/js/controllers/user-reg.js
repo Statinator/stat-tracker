@@ -4,25 +4,30 @@ var $ = require('jquery');
 var _ = require('underscore');
 var views = require('views');
 var router = require('../router');
-var formToObj = require('form-to-obj');
 
 router.route('register', function () {
 
   $('.main-content').html(views['user-reg']);
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
+<<<<<<< HEAD
+
+  $('.user-reg-form').on('submit', function () {
+
+=======
   
   $('.user-reg-form').submit(function (e) {
     e.preventDefault();
     
+>>>>>>> 38e7206ce50b6b7b17586403a4b05f2c5818e189
     var data = {
       'username': $('.username').val(),
       'password': $('.password').val(),
       'email': $('.email').val()
     }
-    
+
     console.log(data);
-    
+
     $.ajax({
       headers: { "X-CSRFToken": csrftoken },
       url: '/api/users/',
@@ -37,7 +42,7 @@ router.route('register', function () {
       console.log(arguements);
     })
   });
-  
+
   function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie != '') {
@@ -53,5 +58,5 @@ router.route('register', function () {
   }
   return cookieValue;
   }
-  
+
 });

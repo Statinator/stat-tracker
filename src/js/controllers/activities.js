@@ -6,7 +6,7 @@ var views = require('views');
 var router = require('../router');
 
 router.route('activities', function () {
-  
+
   render();
 
 function render () {
@@ -16,19 +16,18 @@ function render () {
       method: 'GET'
     })
     .done(function (data) {
-      alert('success');
       console.log(data);
       createTemplate({ activities : data});
       })
     .fail(function (arguements) {
       console.log(arguements);
     });
-    
-  }; 
-  
+
+  };
+
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
-  
+
   function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie != '') {
@@ -44,13 +43,13 @@ function render () {
   }
   return cookieValue;
   }
-  
+
   function createTemplate (model) {
     var templateFn = _.template(views['activities'], { variable: 'm' });
-    
+
     var template = templateFn(model);
-  
+
     $('.main-content').html(template);
   }
-  
+
 });

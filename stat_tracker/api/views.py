@@ -36,10 +36,12 @@ class StatsViewSet(viewsets.ModelViewSet):
 
 
 class StatsDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Stats.objects.all()
     permission_classes = (permissions.IsAuthenticated,
                           IsOwnerOrReadOnly)
     serializer_class = StatsSerializer
+
+    def get_queryset(self, **kwargs):
+        return Stats.objects.filter(activity__id=self.kwargs['pk'])
 
 
 class UserViewSet(viewsets.ModelViewSet):

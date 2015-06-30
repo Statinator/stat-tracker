@@ -9,27 +9,44 @@ var datepicker = require('../../../node_modules/jquery-ui/datepicker.js')
 router.route('new-activity', function () {
 
   $('.main-content').html(views['new-activity']);
-  
+
+
+
+  var csrftoken = getCookie('csrftoken');
+  console.log(csrftoken);
+
+  $('.new-activity').on('submit', function () {
+
+    var data = {
+      'title': $('.name-input').val(),
+      "posted_at": "2015-12-31"
+    }
+
+
   $('.datepicker').datepicker({
     minDate: '-1y',
     maxDate: '-1d',
   });
+<<<<<<< HEAD
+
+
+=======
   
   $.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
   
   
+>>>>>>> 38e7206ce50b6b7b17586403a4b05f2c5818e189
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
-  
+
   $('.new-activity').submit(function (e) {
     e.preventDefault();
     var data = {
       'title': $('.name-input').val(),
       "posted_at": $('.datepicker').val()
     };
-    
     console.log(data);
-    
+
     $.ajax({
       headers: { "X-CSRFToken": csrftoken },
       url: '/api/activities/',
@@ -44,7 +61,7 @@ router.route('new-activity', function () {
       console.log(args);
     })
   });
-  
+
   function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie != '') {
@@ -60,5 +77,5 @@ router.route('new-activity', function () {
   }
   return cookieValue;
   }
-  
+
 });
