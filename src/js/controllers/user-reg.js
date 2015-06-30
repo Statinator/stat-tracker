@@ -13,7 +13,7 @@ router.route('register', function () {
 
   $('.user-reg-form').submit(function (e) {
     e.preventDefault();
-    
+
     var data = {
       'username': $('.username').val(),
       'password': $('.password').val(),
