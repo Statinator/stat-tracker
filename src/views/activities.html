@@ -1,4 +1,3 @@
-<% m.activities.forEach(function (activity) { %>
   <div class="activities-page">
       <header class="activities-header">
         <h2 class="activities-title">The Statinator</h2>
@@ -10,6 +9,7 @@
       </div>
 
     <div class="activity-cards-div">
+    <% m.activities.forEach(function (activity) { %>
       <div class="stack-list-item card">
         <p class="card-header"><a class="share-title" href=""> <%- activity.title %></a></p>
         <div class="card-copy">
@@ -22,9 +22,9 @@
           <button class="delete">Delete</button>
         </div>
       </div>
+      <% }) %>
     </div>
       <div class="btn-new-activity-div">
         <button class="btn-new-activity">Add New Activity +</button>
       </div>
   </div>
-<% }) %>
