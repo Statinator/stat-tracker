@@ -12,8 +12,10 @@ router.route('new-activity', function () {
   
   $('.datepicker').datepicker({
     minDate: '-1y',
-    maxDate: '-1d'
+    maxDate: '-1d',
   });
+  
+  $.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
   
   
   var csrftoken = getCookie('csrftoken');
@@ -36,6 +38,7 @@ router.route('new-activity', function () {
     })
     .done(function () {
       alert('success');
+      document.location.href="/#" + "activities";
     })
     .fail(function (args) {
       console.log(args);
