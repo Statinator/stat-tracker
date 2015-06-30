@@ -15,21 +15,25 @@ router.route('register', function () {
   $('.user-reg-form').on('submit', function () {
     
     var data = {
-      'name': $('.username').val(),
-      'email': $('.email').val(),
-      'password': $('.password').val()
+      'username': $('.username').val(),
+      'password': $('.password').val(),
+      'email': $('.email').val()
     }
     
     console.log(data);
     
     $.ajax({
+      headers: { "X-CSRFToken": csrftoken },
       url: 'http://localhost:8000/api/users/',
       method: 'POST',
       data: data
     })
     .done(function () {
       alert('success');
-    });
+    })
+    .fail(function (arguements) {
+      console.log(arguements);
+    })
   });
   
   function getCookie(name) {
