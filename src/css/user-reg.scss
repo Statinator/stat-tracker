@@ -1,0 +1,55 @@
+.user-reg-form {
+	@include center-horizontal;
+	margin-top: 6em;
+	text-align: center;
+	background-color: #a4a09e;
+	color: #FFFFFE;
+	padding: 3em;
+	border-radius: 15px;
+	border-left: 0.8em solid #bde2de;
+	box-shadow: 0px 5px 5px 0px #423f40;
+}
+
+.user-reg-form button {
+	margin-top: 1em;
+	color: #a4a09e;
+	width: 17em;
+	height: 2em;
+	outline: 2px solid #bde2de;
+}
+
+.user-reg-form label {
+	padding: 0.5em;
+}
+
+.user-reg-form input {
+	margin-bottom: 1em;
+	color: black;
+}
+
+.email {
+  margin-left: 2em;
+}
+
+h1 {
+	font-family: 'Lato', sans-serif;
+	margin-top: 1em;
+	font-size: 2.5em;
+}
+
+.reg-header {
+  text-align: center;
+	background-color: #bde2de;
+	padding: 0.3em;
+	box-shadow: 0px 2px 2px 0px #423f40;
+}
+
+.reg-header h1 {
+	color: #423f40;
+	text-shadow: 2px 2px 5px #FFFFFE;
+}
+
+.sub-header {
+  text-align: center;
+  margin-top: 2em;
+}
