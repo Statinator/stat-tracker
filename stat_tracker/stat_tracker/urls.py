@@ -22,10 +22,14 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'activities', views.ActivityViewSet)
 router.register(r'stats', views.StatsViewSet)
+router.register(r'users', views.UserViewSet),
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', TemplateView.as_view(template_name="index.html")),
     url(r'^api/', include(router.urls)),
-    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^activities/(?P<pk>\d+)/$', views.ActivityDetailViewSet.as_view()),
+    url(r'^activities/(?P<pk>\d+)/stats/$', views.StatsDetailViewSet.as_view()),
 ]
+
