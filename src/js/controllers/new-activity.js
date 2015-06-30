@@ -27,15 +27,9 @@ router.route('new-activity', function () {
     minDate: '-1y',
     maxDate: '-1d',
   });
-<<<<<<< HEAD
-
-
-=======
   
   $.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
   
-  
->>>>>>> 38e7206ce50b6b7b17586403a4b05f2c5818e189
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
 
