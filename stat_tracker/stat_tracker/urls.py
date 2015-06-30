@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="index.html")),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^activities/(?P<pk>\d+)/$', views.ActivityDetailViewSet.as_view()),
-    url(r'^activities/(?P<pk>\d+)/stats/$', views.StatsDetailViewSet.as_view()),
+    url(r'^api/activities/(?P<pk>\d+)/$', views.ActivityDetailViewSet.as_view()),
+    url(r'^api/activities/(?P<pk>\d+)/stats/$', views.StatsDetailViewSet.as_view()),
 ]

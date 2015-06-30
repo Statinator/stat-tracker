@@ -40,7 +40,7 @@ class StatsDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StatsSerializer
 
     def get_queryset(self):
-        return Stats.objects.filter(stats__pk=self.kwargs['pk'])
+        return Stats.objects.filter(activity__pk=self.kwargs['pk'])
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
