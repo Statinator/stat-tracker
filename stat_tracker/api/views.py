@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets, generics, permissions
+from django.contrib.auth.hashers import make_password
 from .models import Activity, Stats
 from .permissions import IsOwnerOrReadOnly
 from django.contrib.auth.models import User
@@ -35,15 +36,20 @@ class StatsViewSet(viewsets.ModelViewSet):
 
 
 class StatsDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Stats.objects.all()
     permission_classes = (permissions.IsAuthenticated,
                           IsOwnerOrReadOnly)
     serializer_class = StatsSerializer
-
-    def get_queryset(self):
-        return Stats.objects.filter(activity__pk=self.kwargs['pk'])
 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(password=make_password(self.request.POST['password']))
+
+
+class UserDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

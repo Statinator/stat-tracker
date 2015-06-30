@@ -4,37 +4,30 @@ var $ = require('jquery');
 var _ = require('underscore');
 var views = require('views');
 var router = require('../router');
-var formToObj = require('form-to-obj');
 
-router.route('register', function () {
-
-  $('.main-content').html(views['user-reg']);
-  var csrftoken = getCookie('csrftoken');
-  console.log(csrftoken);
+router.route('activities', function () {
   
-  $('.user-reg-form').on('submit', function () {
-    
-    var data = {
-      'username': $('.username').val(),
-      'password': $('.password').val(),
-      'email': $('.email').val()
-    }
-    
-    console.log(data);
-    
-    $.ajax({
+  render();
+
+function render () {
+   $.ajax({
       headers: { "X-CSRFToken": csrftoken },
-      url: '/api/users/',
-      method: 'POST',
-      data: data
+      url: '/api/activities/',
+      method: 'GET'
     })
-    .done(function () {
+    .done(function (data) {
       alert('success');
-    })
+      console.log(data);
+      createTemplate({ activities : data});
+      })
     .fail(function (arguements) {
       console.log(arguements);
-    })
-  });
+    });
+    
+  }; 
+  
+  var csrftoken = getCookie('csrftoken');
+  console.log(csrftoken);
   
   function getCookie(name) {
   var cookieValue = null;
@@ -50,6 +43,14 @@ router.route('register', function () {
       }
   }
   return cookieValue;
+  }
+  
+  function createTemplate (model) {
+    var templateFn = _.template(views['activities'], { variable: 'm' });
+    
+    var template = templateFn(model);
+  
+    $('.main-content').html(template);
   }
   
 });
