@@ -4,7 +4,7 @@ var $ = require('jquery');
 var _ = require('underscore');
 var views = require('views');
 var router = require('../router');
-var datepicker = require('/Users/Mark/Documents/dev/stat-tracker/node_modules/jquery-ui/datepicker.js')
+var datepicker = require('../../../node_modules/jquery-ui/datepicker.js')
 
 router.route('new-activity', function () {
 
