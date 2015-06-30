@@ -10,10 +10,10 @@ router.route('register', function () {
   $('.main-content').html(views['user-reg']);
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
-  
+
   $('.user-reg-form').submit(function (e) {
     e.preventDefault();
-    
+
     var data = {
       'username': $('.username').val(),
       'password': $('.password').val(),
