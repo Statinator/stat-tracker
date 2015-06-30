@@ -13,7 +13,7 @@ function render () {
    $('.main-content').html(views['activities']);
    $.ajax({
       headers: { "X-CSRFToken": csrftoken },
-      url: 'http://localhost:8000/api/activities/',
+      url: '/api/activities/',
       method: 'GET'
     })
     .done(function (data) {

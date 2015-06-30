@@ -24,7 +24,7 @@ router.route('register', function () {
     
     $.ajax({
       headers: { "X-CSRFToken": csrftoken },
-      url: 'http://localhost:8000/api/users/',
+      url: '/api/users/',
       method: 'POST',
       data: data
     })

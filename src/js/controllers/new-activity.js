@@ -23,7 +23,7 @@ router.route('new-activity', function () {
     
     $.ajax({
       headers: { "X-CSRFToken": csrftoken },
-      url: 'http://localhost:8000/api/activities/',
+      url: '/api/activities/',
       method: 'POST',
       data: data
     })
