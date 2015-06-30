@@ -15,24 +15,6 @@ router.route('new-activity', function () {
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
 
-  $('.new-activity').on('submit', function () {
-
-    var data = {
-      'title': $('.name-input').val(),
-      "posted_at": "2015-12-31"
-    }
-
-
-  $('.datepicker').datepicker({
-    minDate: '-1y',
-    maxDate: '-1d',
-  });
-  
-  $.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
-  
-  var csrftoken = getCookie('csrftoken');
-  console.log(csrftoken);
-
   $('.new-activity').submit(function (e) {
     e.preventDefault();
     var data = {
