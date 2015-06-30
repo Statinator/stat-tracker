@@ -8,23 +8,20 @@ var router = require('../router');
 router.route('new-activity', function () {
 
   $('.main-content').html(views['new-activity']);
-<<<<<<< HEAD
 
-});
-=======
-  
+
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
-  
+
   $('.new-activity').on('submit', function () {
-    
+
     var data = {
       'title': $('.name-input').val(),
       "posted_at": "2015-12-31"
     }
-    
+
     console.log(data);
-    
+
     $.ajax({
       headers: { "X-CSRFToken": csrftoken },
       url: '/api/activities/',
@@ -38,7 +35,7 @@ router.route('new-activity', function () {
       console.log(arguements);
     })
   });
-  
+
   function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie != '') {
@@ -54,6 +51,5 @@ router.route('new-activity', function () {
   }
   return cookieValue;
   }
-  
+
 });
->>>>>>> c1c24e9fa79892824cc3ac7c8d7b73aeb9846712
