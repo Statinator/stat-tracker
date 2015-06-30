@@ -17,15 +17,12 @@ class ActivityViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
-<<<<<<< HEAD
-=======
 class ActivityDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
     queryset = Activity.objects.all()
     permission_classes = (permissions.IsAuthenticated,
                           IsOwnerOrReadOnly)
     serializer_class = ActivitySerializer
 
->>>>>>> d418364bc1a3fad9b50002c059e87a59d2aff3bb
 
 class StatsViewSet(viewsets.ModelViewSet):
     queryset = Stats.objects.all()
@@ -37,17 +34,14 @@ class StatsViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
-<<<<<<< HEAD
-
-=======
 class StatsDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated,
                           IsOwnerOrReadOnly)
     serializer_class = StatsSerializer
 
     def get_queryset(self):
-        return Stats.objects.filter(stats__pk=self.kwargs['pk'])
->>>>>>> d418364bc1a3fad9b50002c059e87a59d2aff3bb
+        return Stats.objects.filter(activity__pk=self.kwargs['pk'])
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
