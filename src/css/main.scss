@@ -2,5 +2,9 @@
 @import 'pure-min';
 @import 'mixins';
 @import 'user-login';
+@import 'user-reg';
+@import 'new-activity';
 
-
+body {
+  background-color: #FFFFFE;
+}
