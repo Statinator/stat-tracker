@@ -4,20 +4,27 @@ var $ = require('jquery');
 var _ = require('underscore');
 var views = require('views');
 var router = require('../router');
+var datepicker = require('/Users/Mark/Documents/dev/stat-tracker/node_modules/jquery-ui/datepicker.js')
 
 router.route('new-activity', function () {
 
   $('.main-content').html(views['new-activity']);
   
+  $('.datepicker').datepicker({
+    minDate: '-1y',
+    maxDate: '-1d'
+  });
+  
+  
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
   
-  $('.new-activity').on('submit', function () {
-    
+  $('.new-activity').submit(function (e) {
+    e.preventDefault();
     var data = {
       'title': $('.name-input').val(),
-      "posted_at": "2015-12-31"
-    }
+      "posted_at": $('.datepicker').val()
+    };
     
     console.log(data);
     
@@ -30,8 +37,8 @@ router.route('new-activity', function () {
     .done(function () {
       alert('success');
     })
-    .fail(function (arguements) {
-      console.log(arguements);
+    .fail(function (args) {
+      console.log(args);
     })
   });
   
