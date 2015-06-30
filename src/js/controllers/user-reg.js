@@ -12,7 +12,8 @@ router.route('register', function () {
   var csrftoken = getCookie('csrftoken');
   console.log(csrftoken);
   
-  $('.user-reg-form').on('submit', function () {
+  $('.user-reg-form').submit(function (e) {
+    e.preventDefault();
     
     var data = {
       'username': $('.username').val(),
@@ -30,6 +31,7 @@ router.route('register', function () {
     })
     .done(function () {
       alert('success');
+      document.location.href="/#" + "activities";
     })
     .fail(function (arguements) {
       console.log(arguements);
