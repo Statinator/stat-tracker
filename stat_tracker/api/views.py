@@ -35,7 +35,7 @@ class StatsViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
-class StatsDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
+class StatsDetailViewSet(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated,
                           IsOwnerOrReadOnly)
     serializer_class = StatsSerializer
